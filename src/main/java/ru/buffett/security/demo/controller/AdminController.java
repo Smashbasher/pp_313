@@ -32,7 +32,7 @@ public class AdminController {
     }
 
     @GetMapping("create-user")
-    public String getCreateUserForm(Model model, Principal admin) {
+    public String getUserCreationForm(Model model, Principal admin) {
         model.addAttribute("admin", userService.findUserByUsername(admin.getName()));
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("user", new User());
@@ -46,7 +46,7 @@ public class AdminController {
     }
 
     @GetMapping("edit-user/{id}")
-    public String getEditUserForm(@PathVariable("id") Long id, Model model) {
+    public String getUserEditionForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("updateUser", userService.findUserById(id));
         return "edit";
     }
